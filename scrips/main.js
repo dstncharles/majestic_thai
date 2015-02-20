@@ -4,28 +4,25 @@
 // Models / Collections
 // -------------
 
+
 // -------------
 // Views / (Presentation / Interation)
 // -------------
-var MenuView = Backbone.View.extend({
-  tagname: 'li',
-  template: _.template($('#menu-template').html()),
 
-});
 
 // -------------
 // Router / Application State
 // -------------
 
-var AppRouter = Backbone.View.extend({
+var AppRouter = Backbone.Router.extend({
   routes:{
-  '': 'index',
-},
+    '': 'index',
+  },
 
 index: function(){
-  $('.app-container').append(this.el);
-  this.$el.append(this.template);
-}
+  var template = _.template($('#index-template').text() );
+    $('.app-container').html(template());
+},
 
 });
 

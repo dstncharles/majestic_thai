@@ -3,11 +3,26 @@
 // -------------
 // Models / Collections
 // -------------
-// // var FoodItem = Backbone.Model.extend.({
-// //   defaults: {
-// //
-// //   }
-// });
+var FoodModel = Backbone.Model.extend ({
+  defaults: {
+    type: '',
+    name: '',
+    description: '',
+    price: '',
+},
+
+});
+
+var FoodCollection = Backbone.Collection.extend ({
+  model: FoodModel,
+
+   Url: 'https://api.parse.com/1/classes/post',
+
+   parse: function(response) {
+     return response.results;
+   }
+
+});
 
 
 // -------------

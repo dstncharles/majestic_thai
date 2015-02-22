@@ -3,6 +3,11 @@
 // -------------
 // Models / Collections
 // -------------
+// // var FoodItem = Backbone.Model.extend.({
+// //   defaults: {
+// //
+// //   }
+// });
 
 
 // -------------
@@ -55,18 +60,14 @@ index: function(){
   this.currentView = new IndexView();
   this.currentView.render();
     $('.app-container').html(this.currentView.el);
-},
 
-menu: function(){
-  this.currentView = new MenuView();
-  this.currentView.render();
-    $('.app-container').html(this.currentView.el);
-},
+    this.currentView = new MenuView();
+    this.currentView.render();
+      $('.app-container').append(this.currentView.el);
 
-checkout: function(){
-  this.currentView = new CheckoutView();
-  this.currentView.render();
-    $('.app-container').html(this.currentView.el);
+      this.currentView = new CheckoutView();
+      this.currentView.render();
+        $('.app-container').append(this.currentView.el);
 },
 
 });

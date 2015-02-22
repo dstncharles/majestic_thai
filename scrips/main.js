@@ -21,12 +21,23 @@ var IndexView = Backbone.View.extend({
 });
 
 var MenuView = Backbone.View.extend({
-  tagName: 'li',
-  template: _.template($('#index-template').text() ),
+
+  template: _.template($('#menu-template').text() ),
+
+  render: function(){
+    this.$el.html(this.template());
+    return this;
+  }
 });
 
 var CheckoutView = Backbone.View.extend({
-  template: _.template($('#index-template').text() ),
+
+  template: _.template($('#checkout-template').text() ),
+
+  render: function(){
+    this.$el.html(this.template());
+    return this;
+  }
 });
 
 // -------------
@@ -36,13 +47,24 @@ var CheckoutView = Backbone.View.extend({
 var AppRouter = Backbone.Router.extend({
   routes:{
     '': 'index',
+    'menu': 'menu',
+    'checkout': 'checkout',
   },
 
-initialize: function() {
+index: function(){
   this.currentView = new IndexView();
+  this.currentView.render();
+    $('.app-container').html(this.currentView.el);
 },
 
-index: function(){
+menu: function(){
+  this.currentView = new MenuView();
+  this.currentView.render();
+    $('.app-container').html(this.currentView.el);
+},
+
+checkout: function(){
+  this.currentView = new CheckoutView();
   this.currentView.render();
     $('.app-container').html(this.currentView.el);
 },
